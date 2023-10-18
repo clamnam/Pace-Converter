@@ -42,7 +42,9 @@ class Calculator:
             seconds = seconds + (mins * 60) #then turn it into seconds
             
             minutedecimal = seconds / 60
-            singlekmpace = minutedecimal / 1
+            
+            singlekmpace = minutedecimal / self.dist
+            
             singlekmpace = singlekmpace
             minutes = int(singlekmpace)
             secondseconds = int((singlekmpace - minutes) * 60)
