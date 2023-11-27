@@ -54,6 +54,11 @@ class Calculator:
         except:
             return "Invalid Time Entry"
 
+    def userPace(self):
+        mins, secs = self.pace()
+        result = mins, ":", secs
+        return result
+
     def KmM(self):
         try:
             mins, seconds = self.pace()
@@ -70,7 +75,8 @@ class Calculator:
             minutes = timeToComplete1Unit // 60
             remainingSeconds = timeToComplete1Unit % 60
 
-            return int(minutes), int(remainingSeconds)
+            result = int(minutes), ":", int(remainingSeconds)
+            return result
         except:
             return "Invalid Time Entry"
 
@@ -92,6 +98,7 @@ class Calculator:
             minutes = timeToComplete1Unit // 60
             remainingSeconds = timeToComplete1Unit % 60
 
-            return int(minutes), int(remainingSeconds)
+            result = int(minutes), ":", int(remainingSeconds)
+            return result
         except:
             return "Invalid Time Entry"

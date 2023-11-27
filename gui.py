@@ -19,6 +19,7 @@ class CalcApp:
         # Create an instance of Calculator
         self.calc = calc(self.dist, self.time)
 
+        # Labels for the radio buttons
         self.radioLabels = [
             "Pace",
             "Convert Miles to Km",
@@ -26,8 +27,10 @@ class CalcApp:
             "Convert min/mile to min/km",
             "Convert min/km to min/mile",
         ]
+        # Functions for radio Buttons on submit
+
         self.function_dict = {
-            "Pace": self.calc.pace,
+            "Pace": self.calc.userPace,
             "Convert Miles to Km": self.calc.MilesKilometers,
             "Convert Kms to Miles": self.calc.KilometersMiles,
             "Convert min/mile to min/km": self.calc.MkM,
@@ -58,8 +61,6 @@ class CalcApp:
 
     # function to create
     def radioArray(self):
-        # Labels for the radio buttons
-
         # create radio buttons for selecting calculator command
         for label in self.radioLabels:
             radio_button = ttk.Radiobutton(
@@ -93,10 +94,11 @@ class CalcApp:
 
         # Print the result
         self.output.config(text=result)
-        print("Result:", result)
-        print("dist value:", self.dist)
-        print("time value:", self.time)
-        print("Selected value:", selected_label)
+        ###verifying data passing through
+        # print("Result:", result)
+        # print("dist value:", self.dist)
+        # print("time value:", self.time)
+        # print("Selected value:", selected_label)
 
     def main(self):
         # Pack and display UI
