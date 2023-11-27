@@ -19,6 +19,21 @@ class CalcApp:
         # Create an instance of Calculator
         self.calc = calc(self.dist, self.time)
 
+        self.radioLabels = [
+            "Pace",
+            "Convert Miles to Km",
+            "Convert Kms to Miles",
+            "Convert min/mile to min/km",
+            "Convert min/km to min/mile",
+        ]
+        self.function_dict = {
+            "Pace": self.calc.pace,
+            "Convert Miles to Km": self.calc.MilesKilometers,
+            "Convert Kms to Miles": self.calc.KilometersMiles,
+            "Convert min/mile to min/km": self.calc.MkM,
+            "Convert min/km to min/mile": self.calc.KmM,
+        }
+
         # Initialize the main window
         self.window.title("Conversion Calculator")
         self.allRadios = []
@@ -44,13 +59,6 @@ class CalcApp:
     # function to create
     def radioArray(self):
         # Labels for the radio buttons
-        self.radioLabels = [
-            "Pace",
-            "Convert Miles to Km",
-            "Convert Kms to Miles",
-            "Convert min/mile to min/km",
-            "Convert min/km to min/mile",
-        ]
 
         # create radio buttons for selecting calculator command
         for label in self.radioLabels:
@@ -66,29 +74,20 @@ class CalcApp:
             radio.pack()
 
     def submit(self):
-        # Get the current values from Entry fields
-        # try:
         self.dist = float(self.distEntry.get())  # Convert to float
         self.time = self.timeEntry.get()
 
         # Update the Calculator instance with the new values entered in the entry fields
         self.calc.dist = self.dist
         self.calc.time = self.time
+
         # get label of the selected radio button
         selected_label = self.selected_value.get()
-        print(selected_label)
-        # selected_id = self.selected_value.get()
-        function_dict = {
-            "Pace": self.calc.pace(),
-            "Convert Miles to Km": self.calc.MilesKilometers(),
-            "Convert Kms to Miles": self.calc.KilometersMiles(),
-            "Convert min/mile to min/km": self.calc.MkM(),
-            "Convert min/km to min/mile": self.calc.KmM(),
-        }
+
         # match radio button selection to desired calc function
-        if selected_label in function_dict:
-            selected_function = function_dict.get(selected_label)
-            result = function_dict.get(selected_label)
+        if selected_label in self.function_dict:
+            selected_function = self.function_dict[selected_label]
+            result = selected_function()
         else:
             result = "option not selected"
 
@@ -98,9 +97,6 @@ class CalcApp:
         print("dist value:", self.dist)
         print("time value:", self.time)
         print("Selected value:", selected_label)
-
-    # except:
-    #     self.output.config(text="Invalid Distance Entry")
 
     def main(self):
         # Pack and display UI
