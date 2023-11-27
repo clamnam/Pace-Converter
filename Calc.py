@@ -15,6 +15,8 @@ class Calculator:
 
     def MilesKilometers(self):
         # handle if incorrect input isnt given
+        print(self.dist)
+
         try:
             # turn miles into km
             return self.dist * 1.609344
@@ -31,6 +33,7 @@ class Calculator:
 
     def pace(self):
         # handle if input isnt given
+
         try:
             (
                 mins,

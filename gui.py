@@ -51,6 +51,7 @@ class CalcApp:
             "Convert min/mile to min/km",
             "Convert min/km to min/mile",
         ]
+
         # create radio buttons for selecting calculator command
         for label in self.radioLabels:
             radio_button = ttk.Radiobutton(
@@ -66,39 +67,40 @@ class CalcApp:
 
     def submit(self):
         # Get the current values from Entry fields
-        try:
-            self.dist = float(self.distEntry.get())  # Convert to float
-            self.time = self.timeEntry.get()
+        # try:
+        self.dist = float(self.distEntry.get())  # Convert to float
+        self.time = self.timeEntry.get()
 
-            # Update the Calculator instance with the new values entered in the entry fields
-            self.calc.dist = self.dist
-            self.calc.time = self.time
-            # get label of the selected radio button
-            selected_label = self.selected_value.get()
-            # selected_id = self.selected_value.get()
+        # Update the Calculator instance with the new values entered in the entry fields
+        self.calc.dist = self.dist
+        self.calc.time = self.time
+        # get label of the selected radio button
+        selected_label = self.selected_value.get()
+        print(selected_label)
+        # selected_id = self.selected_value.get()
+        function_dict = {
+            "Pace": self.calc.pace(),
+            "Convert Miles to Km": self.calc.MilesKilometers(),
+            "Convert Kms to Miles": self.calc.KilometersMiles(),
+            "Convert min/mile to min/km": self.calc.MkM(),
+            "Convert min/km to min/mile": self.calc.KmM(),
+        }
+        # match radio button selection to desired calc function
+        if selected_label in function_dict:
+            selected_function = function_dict.get(selected_label)
+            result = function_dict.get(selected_label)
+        else:
+            result = "option not selected"
 
-            # match radio button selection to desired calc function
-            if selected_label == "Pace":
-                result = self.calc.pace()
-            elif selected_label == "Convert Miles to Km":
-                result = self.calc.MilesKilometers()
-            elif selected_label == "Convert Kms to Miles":
-                result = self.calc.KilometersMiles()
-            elif selected_label == "Convert min/mile to min/km":
-                result = self.calc.MkM()
-            elif selected_label == "Convert min/km to min/mile":
-                result = self.calc.KmM()
-            else:
-                result = "option not selected"
+        # Print the result
+        self.output.config(text=result)
+        print("Result:", result)
+        print("dist value:", self.dist)
+        print("time value:", self.time)
+        print("Selected value:", selected_label)
 
-            # Print the result
-            self.output.config(text=result)
-            print("Result:", result)
-            print("dist value:", self.dist)
-            print("time value:", self.time)
-            print("Selected value:", selected_label)
-        except:
-            self.output.config(text="Invalid Distance Entry")
+    # except:
+    #     self.output.config(text="Invalid Distance Entry")
 
     def main(self):
         # Pack and display UI
