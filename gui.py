@@ -29,18 +29,18 @@ class CalcApp:
         ]
         # Functions for radio Buttons on submit
 
-        self.function_dict = {
+        self.functionDict = {
             "Pace": self.calc.userPace,
-            "Convert Miles to Km": self.calc.MilesKilometers,
-            "Convert Kms to Miles": self.calc.KilometersMiles,
-            "Convert min/mile to min/km": self.calc.MkM,
-            "Convert min/km to min/mile": self.calc.KmM,
+            "Convert Miles to Km": self.calc.milesKilometers,
+            "Convert Kms to Miles": self.calc.kilometersMiles,
+            "Convert min/mile to min/km": self.calc.milesToKm,
+            "Convert min/km to min/mile": self.calc.kmToMiles,
         }
 
         # Initialize the main window
         self.window.title("Conversion Calculator")
         self.allRadios = []
-        self.selected_value = (
+        self.selectedValue = (
             tk.StringVar()
         )  # Variable to store the selected radio button value
 
@@ -63,10 +63,10 @@ class CalcApp:
     def radioArray(self):
         # create radio buttons for selecting calculator command
         for label in self.radioLabels:
-            radio_button = ttk.Radiobutton(
-                self.window, text=label, variable=self.selected_value, value=label
+            radioButton = ttk.Radiobutton(
+                self.window, text=label, variable=self.selectedValue, value=label
             )
-            self.allRadios.append(radio_button)
+            self.allRadios.append(radioButton)
         return self.allRadios
 
     def radio(self, allRadios):
@@ -83,12 +83,12 @@ class CalcApp:
         self.calc.time = self.time
 
         # get label of the selected radio button
-        selected_label = self.selected_value.get()
+        selectedLabel = self.selectedValue.get()
 
         # match radio button selection to desired calc function
-        if selected_label in self.function_dict:
-            selected_function = self.function_dict[selected_label]
-            result = selected_function()
+        if selectedLabel in self.functionDict:
+            selectedFunction = self.functionDict[selectedLabel]
+            result = selectedFunction()
         else:
             result = "option not selected"
 
@@ -98,7 +98,7 @@ class CalcApp:
         # print("Result:", result)
         # print("dist value:", self.dist)
         # print("time value:", self.time)
-        # print("Selected value:", selected_label)
+        # print("Selected value:", selectedLabel)
 
     def main(self):
         # Pack and display UI

@@ -13,7 +13,7 @@ class Calculator:
         except:
             return "Incorrect time format"
 
-    def MilesKilometers(self):
+    def milesKilometers(self):
         # handle if incorrect input isnt given
         print(self.dist)
 
@@ -21,15 +21,15 @@ class Calculator:
             # turn miles into km
             return self.dist * 1.609344
         except:
-            return "Failed on MilesKilometers"
+            return "Failed on milesKilometers"
 
-    def KilometersMiles(self):
+    def kilometersMiles(self):
         # handle if incorrect input isnt given
         try:
             # turn km into miles
             return self.dist * 0.621371
         except:
-            return "Failed on KilometersMiles"
+            return "Failed on kilometersMiles"
 
     def pace(self):
         # handle if input isnt given
@@ -59,7 +59,7 @@ class Calculator:
         result = mins, ":", secs
         return result
 
-    def KmM(self):
+    def kmToMiles(self):
         try:
             mins, seconds = self.pace()
             # Convert the pace to seconds to complete
@@ -80,7 +80,7 @@ class Calculator:
         except:
             return "Invalid Time Entry"
 
-    def MkM(self):
+    def milesToKm(self):
         try:
             # Calculate the pace for 1 mile
             mins, seconds = self.pace()
