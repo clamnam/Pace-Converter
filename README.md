@@ -4,7 +4,7 @@ Python Program with Tkinter GUI allowing users to find
   - mins-per-mile/km pace.
   - convert min/mile pace to min/km pace and vice versa.
     
-## Activated using
+## Run via using
 ``` 
 python gui.py
 ```
