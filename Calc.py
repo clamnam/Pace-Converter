@@ -9,6 +9,8 @@ class Calculator:
             # make inputted time, machine readable by splitting mins+secs using the mandatory
 
             mins, seconds = map(int, self.time.split(":"))
+            if mins < 0 or seconds < 0 or seconds >= 60:
+                return "Minutes need to be positive. Seconds need to be 0-60"
             return mins, seconds
         except:
             return "Incorrect time format"
@@ -75,7 +77,7 @@ class Calculator:
             minutes = timeToComplete1Unit // 60
             remainingSeconds = timeToComplete1Unit % 60
 
-            result = int(minutes), ":", int(remainingSeconds)
+            result = int(minutes), ":", int(remainingSeconds), "mins/mile"
             return result
         except:
             return "Invalid Time Entry"
@@ -98,7 +100,7 @@ class Calculator:
             minutes = timeToComplete1Unit // 60
             remainingSeconds = timeToComplete1Unit % 60
 
-            result = int(minutes), ":", int(remainingSeconds)
+            result = int(minutes), ":", int(remainingSeconds), "mins/km"
             return result
         except:
             return "Invalid Time Entry"
