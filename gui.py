@@ -20,7 +20,7 @@ class CalcApp:
         self.calc = calc(self.dist, self.time)
 
         # Labels for the radio buttons
-        self.radioLabels = [
+        self.radio_labels = [
             "Pace",
             "Convert Miles to Km",
             "Convert Kms to Miles",
@@ -29,12 +29,12 @@ class CalcApp:
         ]
         # Functions for radio Buttons on submit
 
-        self.functionDict = {
-            "Pace": self.calc.userPace,
-            "Convert Miles to Km": self.calc.milesKilometers,
-            "Convert Kms to Miles": self.calc.kilometersMiles,
-            "Convert min/mile to min/km": self.calc.milesToKm,
-            "Convert min/km to min/mile": self.calc.kmToMiles,
+        self.function_dict = {
+            "Pace": self.calc.user_pace,
+            "Convert Miles to Km": self.calc.miles_kilometers,
+            "Convert Kms to Miles": self.calc.kilometers_miles,
+            "Convert min/mile to min/km": self.calc.miles_to_km,
+            "Convert min/km to min/mile": self.calc.km_to_miles,
         }
 
         # Initialize the main window
@@ -60,9 +60,9 @@ class CalcApp:
         )
 
     # function to create
-    def radioArray(self):
+    def radio_array(self):
         # create radio buttons for selecting calculator command
-        for label in self.radioLabels:
+        for label in self.radio_labels:
             radioButton = ttk.Radiobutton(
                 self.window, text=label, variable=self.selectedValue, value=label
             )
@@ -86,8 +86,8 @@ class CalcApp:
         selectedLabel = self.selectedValue.get()
 
         # match radio button selection to desired calc function
-        if selectedLabel in self.functionDict:
-            selectedFunction = self.functionDict[selectedLabel]
+        if selectedLabel in self.function_dict:
+            selectedFunction = self.function_dict[selectedLabel]
             result = selectedFunction()
         else:
             result = "option not selected"
@@ -104,7 +104,7 @@ class CalcApp:
         # Pack and display UI
         self.label.pack()
         self.radio(
-            self.radioArray()
+            self.radio_array()
         )  # Call the method to pack the radio buttons and create the radio buttons contained within
         self.distLabel.pack()
         self.distEntry.pack()

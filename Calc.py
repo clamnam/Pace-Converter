@@ -3,7 +3,7 @@ class Calculator:
         self.dist = dist
         self.time = time
 
-    def SplitTime(self):
+    def split_time(self):
         # handle if incorrect input isnt given
         try:
             # make inputted time, machine readable by splitting mins+secs using the mandatory
@@ -15,7 +15,7 @@ class Calculator:
         except:
             return "Incorrect time format"
 
-    def milesKilometers(self):
+    def miles_kilometers(self):
         # handle if incorrect input isnt given
         print(self.dist)
 
@@ -23,15 +23,15 @@ class Calculator:
             # turn miles into km
             return self.dist * 1.609344
         except:
-            return "Failed on milesKilometers"
+            return "Failed on miles_kilometers"
 
-    def kilometersMiles(self):
+    def kilometers_miles(self):
         # handle if incorrect input isnt given
         try:
             # turn km into miles
             return self.dist * 0.621371
         except:
-            return "Failed on kilometersMiles"
+            return "Failed on kilometers_miles"
 
     def pace(self):
         # handle if input isnt given
@@ -40,7 +40,7 @@ class Calculator:
             (
                 mins,
                 seconds,
-            ) = self.SplitTime()  # call splitTime to use the entered time easier
+            ) = self.split_time()  # call split_time to use the entered time easier
 
             seconds = seconds + (mins * 60)  # then turn it into seconds
 
@@ -56,12 +56,12 @@ class Calculator:
         except:
             return "Invalid Time Entry"
 
-    def userPace(self):
+    def user_pace(self):
         mins, secs = self.pace()
         result = mins, ":", secs
         return result
 
-    def kmToMiles(self):
+    def km_to_miles(self):
         try:
             mins, seconds = self.pace()
             # Convert the pace to seconds to complete
@@ -82,7 +82,7 @@ class Calculator:
         except:
             return "Invalid Time Entry"
 
-    def milesToKm(self):
+    def miles_to_km(self):
         try:
             # Calculate the pace for 1 mile
             mins, seconds = self.pace()
